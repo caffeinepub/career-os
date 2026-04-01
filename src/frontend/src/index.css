@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design Tokens ─────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    /* Background: #070A10 */
+    --background: 14.5 50% 4%;
+    /* Card surface: #0F172A */
+    --card: 222 47% 12%;
+    --card-foreground: 210 40% 95%;
+    /* Popover */
+    --popover: 222 47% 12%;
+    --popover-foreground: 210 40% 95%;
+    /* Border: #1E293B */
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    /* Primary text: #F1F5F9 */
+    --foreground: 210 40% 95%;
+    /* Primary action: cyan */
+    --primary: 0.85 0.2 199;
+    --primary-foreground: 0.1 0 0;
+    /* Secondary */
+    --secondary: 0.18 0.02 240;
+    --secondary-foreground: 0.85 0.02 240;
+    /* Muted: #64748B */
+    --muted: 0.22 0.02 240;
+    --muted-foreground: 0.52 0.04 240;
+    /* Accent: purple */
+    --accent: 0.2 0.05 290;
+    --accent-foreground: 0.85 0.15 290;
+    /* Destructive */
+    --destructive: 0.55 0.22 27;
+    --destructive-foreground: 0.95 0 0;
+    /* Ring */
+    --ring: 0.85 0.2 199;
+    /* Radius */
+    --radius: 0.75rem;
+    /* Charts */
+    --chart-1: 0.85 0.2 199;
+    --chart-2: 0.68 0.22 290;
+    --chart-3: 0.72 0.22 142;
+    --chart-4: 0.78 0.18 45;
+    --chart-5: 0.65 0.22 27;
+    /* Sidebar */
+    --sidebar: 0.1 0.015 240;
+    --sidebar-foreground: 0.85 0.02 240;
+    --sidebar-primary: 0.85 0.2 199;
+    --sidebar-primary-foreground: 0.1 0 0;
+    --sidebar-accent: 0.18 0.02 240;
+    --sidebar-accent-foreground: 0.85 0.02 240;
+    --sidebar-border: 0.22 0.02 240;
+    --sidebar-ring: 0.85 0.2 199;
+    /* Career OS Accents */
+    --cyan: 0.85 0.18 199;
+    --violet: 0.65 0.25 290;
+    --gold: 0.82 0.18 75;
+  }
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply bg-background text-foreground;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(var(--border));
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(var(--muted-foreground));
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 3px;
+  }
+}
+
+/* ─── Utility Classes ────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-gradient-cyan {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--cyan)) 0%,
+      oklch(var(--violet)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-violet {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--violet)) 0%,
+      oklch(var(--cyan)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-glass {
+    background: oklch(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(var(--border));
+    border-radius: var(--radius);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px oklch(var(--cyan) / 0.2), 0 0 40px
+      oklch(var(--cyan) / 0.08);
+  }
+
+  .glow-violet {
+    box-shadow: 0 0 20px oklch(var(--violet) / 0.2), 0 0 40px
+      oklch(var(--violet) / 0.08);
+  }
+
+  .shimmer-bg {
+    background: linear-gradient(
+      90deg,
+      oklch(var(--muted)) 25%,
+      oklch(var(--border)) 50%,
+      oklch(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
