@@ -61,7 +61,6 @@ export function ResumeLab() {
   return (
     <div className="flex-1 overflow-y-auto scrollbar-thin">
       <div className="max-w-4xl mx-auto px-4 py-8 pb-24 md:pb-10 space-y-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,9 +72,7 @@ export function ResumeLab() {
               <FileText className="h-5 w-5 text-gold" />
             </div>
             <div>
-              <h1 className="font-display font-bold text-2xl text-foreground">
-                Resume Lab
-              </h1>
+              <h1 className="font-bold text-2xl text-foreground">Resume Lab</h1>
               <p className="text-muted-foreground text-xs">
                 Enterprise-grade ATS optimization & resume intelligence
               </p>
@@ -83,7 +80,6 @@ export function ResumeLab() {
           </div>
         </motion.div>
 
-        {/* Main Card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -92,26 +88,22 @@ export function ResumeLab() {
         >
           <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-amber-500/5 pointer-events-none" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
-
           <div className="relative flex flex-col md:flex-row gap-8">
             <div className="flex-1">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-5">
                 <Sparkles className="h-3.5 w-3.5 text-gold" />
                 <span className="text-gold text-xs font-mono font-medium tracking-wider">
-                  PHASE 4 · COMING SOON
+                  RESUME INTELLIGENCE
                 </span>
               </div>
-
-              <h2 className="font-display font-bold text-2xl text-foreground mb-3">
+              <h2 className="font-bold text-2xl text-foreground mb-3">
                 Resume Intelligence Lab
               </h2>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                No flashy score gimmicks. Professional diagnostic panels that
-                tell you exactly what's missing and how to fix it — like a
-                senior engineer reviewing your resume.
+                Professional diagnostic panels that tell you exactly what's
+                missing and how to fix it — like a senior engineer reviewing
+                your resume.
               </p>
-
-              {/* Upload zone preview */}
               <div
                 className="border-2 border-dashed border-gold/25 rounded-xl p-5 text-center bg-gold/5 mb-4"
                 data-ocid="resume_lab.dropzone"
@@ -133,7 +125,6 @@ export function ResumeLab() {
                   Upload Resume
                 </Button>
               </div>
-
               <div className="flex items-center gap-3">
                 <Link to="/" data-ocid="resume_lab.back.link">
                   <Button
@@ -154,8 +145,6 @@ export function ResumeLab() {
                 </Link>
               </div>
             </div>
-
-            {/* Analysis Preview Panel */}
             <div className="md:w-56 space-y-3">
               <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">
                 Analysis Preview
@@ -208,7 +197,6 @@ export function ResumeLab() {
           </div>
         </motion.div>
 
-        {/* Feature Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {ATS_FEATURES.map((feature, i) => (
             <motion.div
@@ -216,10 +204,10 @@ export function ResumeLab() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + i * 0.04 }}
-              className="glass-card rounded-xl p-4 space-y-1.5 opacity-70"
+              className="glass-card rounded-xl p-4 space-y-1.5"
             >
               <span className="text-xl">{feature.icon}</span>
-              <h3 className="font-display font-semibold text-[12px] text-foreground">
+              <h3 className="font-semibold text-[12px] text-foreground">
                 {feature.title}
               </h3>
               <p className="text-muted-foreground text-[10px] leading-relaxed">

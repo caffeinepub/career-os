@@ -43,7 +43,6 @@ export function StatsCard({
   index = 0,
 }: StatsCardProps) {
   const colors = colorMap[color];
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -64,12 +63,7 @@ export function StatsCard({
         <p className="text-muted-foreground text-xs font-medium truncate">
           {label}
         </p>
-        <p
-          className={cn(
-            "font-display font-bold text-xl leading-tight",
-            colors.valueBg,
-          )}
-        >
+        <p className={cn("font-bold text-xl leading-tight", colors.valueBg)}>
           {value}
         </p>
         {description && (
@@ -78,7 +72,6 @@ export function StatsCard({
           </p>
         )}
       </div>
-      {/* Subtle glow at corner */}
       <div
         className={cn(
           "absolute -top-6 -right-6 w-16 h-16 rounded-full blur-2xl opacity-20 transition-opacity group-hover:opacity-40",

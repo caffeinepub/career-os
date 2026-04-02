@@ -1,34 +1,25 @@
 # Career OS
 
 ## Current State
-New project — no existing files.
+The workspace has a `.old/` directory with a complete previous build. All 6 pages (Dashboard, Discover, CareerPath, Learning, ResumeLab, Radar) exist with full UI, components, and hooks. Backend Motoko is fully defined. The project failed to deploy in previous attempts due to build errors.
 
 ## Requested Changes (Diff)
 
 ### Add
-- Full Career OS application: India's AI-powered Career Intelligence Platform
-- Dark Gen-Z premium UI (Linear × Notion × Spotify aesthetic)
-- App shell with sidebar navigation
-- Dashboard: personalized job feed, stats, quick actions
-- Job Discovery: search + filters (category, state, skills, deadline), immersive job detail view
-- Career Clarity Engine: 5-step onboarding wizard, 3 career path cards, skill gap panel
-- Learning Hubs: CS, UPSC, Banking, MBA, SSC, Mechanical — each with roadmap, playlists, resources
-- Resume Lab: ATS analyzer UI, keyword alignment, role fit, resume builder form
-- Demand Radar: skill demand charts, sector trends, state-wise growth, monthly demand index
-- Seed data: 15+ jobs (Govt + Private), 6 learning hubs, career paths for major degrees
+- Restore the full app from the `.old/` directory with all 6 pages working
+- Complete, deployable version of Career OS
 
 ### Modify
-N/A
+- Nothing — restore from existing working code
 
 ### Remove
-N/A
+- Nothing
 
 ## Implementation Plan
-1. Backend: Store jobs, career paths, learning hubs, demand data as stable queries
-2. Frontend shell: dark layout, sidebar nav (Dashboard, Discover, Career, Learn, Resume, Radar)
-3. Dashboard page: feed, stats cards, trending skills
-4. Discover page: job cards grid, filters, job detail sheet
-5. Career Clarity page: onboarding wizard → career path generator
-6. Learning Hubs page: hub cards → hub detail with roadmap, playlists, resources
-7. Resume Lab page: upload/builder UI, ATS analysis panels
-8. Radar page: demand charts, trend tables
+1. Write backend `main.mo` from old code (job/profile/learning/career management)
+2. Generate frontend with all 6 pages: Dashboard, Discover, CareerPath, Learning, ResumeLab, Radar
+3. Restore all components: JobCard, StatsCard, JobCardSkeleton
+4. Restore hooks: useQueries, useActor
+5. Restore styles: index.css, tailwind.config.js
+6. Restore App.tsx with routing and sidebar/mobile nav
+7. Validate and deploy

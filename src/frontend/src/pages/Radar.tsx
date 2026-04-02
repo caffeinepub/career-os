@@ -82,7 +82,6 @@ export function Radar() {
   return (
     <div className="flex-1 overflow-y-auto scrollbar-thin">
       <div className="max-w-4xl mx-auto px-4 py-8 pb-24 md:pb-10 space-y-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -94,7 +93,7 @@ export function Radar() {
               <TrendingUp className="h-5 w-5 text-cyan" />
             </div>
             <div>
-              <h1 className="font-display font-bold text-2xl text-foreground">
+              <h1 className="font-bold text-2xl text-foreground">
                 Demand Radar
               </h1>
               <p className="text-muted-foreground text-xs">
@@ -104,7 +103,6 @@ export function Radar() {
           </div>
         </motion.div>
 
-        {/* Coming Soon + Demand Index */}
         <div className="grid md:grid-cols-[1fr_280px] gap-5">
           {/* Monthly Demand Index */}
           <motion.div
@@ -118,7 +116,7 @@ export function Radar() {
             <div className="relative">
               <div className="flex items-center justify-between mb-5">
                 <div>
-                  <h2 className="font-display font-bold text-lg text-foreground">
+                  <h2 className="font-bold text-lg text-foreground">
                     Monthly Demand Index
                   </h2>
                   <p className="text-muted-foreground text-xs mt-0.5">
@@ -136,7 +134,6 @@ export function Radar() {
                   </span>
                 </div>
               </div>
-
               <div className="space-y-4">
                 {DEMAND_INDEX.map((item, i) => (
                   <motion.div
@@ -188,13 +185,12 @@ export function Radar() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-violet/5 to-transparent pointer-events-none" />
             <div className="relative">
-              <h2 className="font-display font-bold text-base text-foreground mb-1">
+              <h2 className="font-bold text-base text-foreground mb-1">
                 Opportunity Radar
               </h2>
               <p className="text-muted-foreground text-[11px] mb-4">
                 AI-predicted upcoming hirings
               </p>
-
               <div className="space-y-3">
                 {RADAR_PREDICTIONS.map((pred, i) => (
                   <motion.div
@@ -206,7 +202,7 @@ export function Radar() {
                     data-ocid={`radar.prediction.item.${i + 1}`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-[12px] font-display font-semibold text-foreground">
+                      <span className="text-[12px] font-semibold text-foreground">
                         {pred.org}
                       </span>
                       <Badge
@@ -235,12 +231,11 @@ export function Radar() {
                   </motion.div>
                 ))}
               </div>
-
               <div className="mt-4 pt-3 border-t border-border/40">
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-violet/10 border border-violet/20">
                   <Sparkles className="h-3 w-3 text-violet" />
                   <span className="text-violet text-[10px] font-mono">
-                    PHASE 5 · FULL ENGINE COMING
+                    AI PREDICTIONS ENGINE
                   </span>
                 </div>
               </div>
@@ -248,7 +243,6 @@ export function Radar() {
           </motion.div>
         </div>
 
-        {/* Bottom CTA */}
         <div className="flex items-center gap-3 pt-2">
           <Link to="/" data-ocid="radar.back.link">
             <Button

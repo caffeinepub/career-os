@@ -17,7 +17,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Sora", "sans-serif"],
-        display: ["Cabinet Grotesk", "sans-serif"],
+        display: ["Sora", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
       colors: {

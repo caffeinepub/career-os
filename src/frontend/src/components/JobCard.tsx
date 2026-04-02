@@ -58,17 +58,14 @@ export function JobCard({
       )}
       data-ocid={`job.item.${index + 1}`}
     >
-      {/* Subtle gradient accent top */}
       <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-      {/* Header */}
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <Badge
               variant="outline"
               className={cn(
-                "text-[10px] font-display font-semibold tracking-wider uppercase px-2 py-0 border",
+                "text-[10px] font-semibold tracking-wider uppercase px-2 py-0 border",
                 job.jobType === JobType.govt
                   ? "text-amber-400 border-amber-400/30 bg-amber-400/10"
                   : "text-cyan border-cyan/30 bg-cyan/10",
@@ -79,20 +76,19 @@ export function JobCard({
             {job.isFeatured && (
               <Badge
                 variant="outline"
-                className="text-[10px] font-display font-semibold tracking-wider uppercase px-2 py-0 text-violet border-violet/30 bg-violet/10"
+                className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0 text-violet border-violet/30 bg-violet/10"
               >
                 Featured
               </Badge>
             )}
           </div>
-          <h3 className="font-display font-semibold text-foreground text-sm leading-tight truncate group-hover:text-cyan transition-colors">
+          <h3 className="font-semibold text-foreground text-sm leading-tight truncate group-hover:text-cyan transition-colors">
             {job.title}
           </h3>
           <p className="text-muted-foreground text-xs mt-0.5 truncate">
             {job.organization}
           </p>
         </div>
-
         <Button
           variant="ghost"
           size="icon"
@@ -104,7 +100,6 @@ export function JobCard({
           )}
           onClick={handleSave}
           data-ocid={`job.save_button.${index + 1}`}
-          aria-label={isSaved ? "Unsave job" : "Save job"}
         >
           {isSaved ? (
             <BookmarkCheck className="h-3.5 w-3.5" />
@@ -113,15 +108,11 @@ export function JobCard({
           )}
         </Button>
       </div>
-
-      {/* Summary */}
       {!compact && (
         <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2">
           {job.summary}
         </p>
       )}
-
-      {/* Skills */}
       <div className="flex flex-wrap gap-1.5">
         {job.skills.slice(0, 3).map((skill) => (
           <span
@@ -137,8 +128,6 @@ export function JobCard({
           </span>
         )}
       </div>
-
-      {/* Footer */}
       <div className="flex items-center justify-between pt-1 border-t border-border/50">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1">
@@ -156,7 +145,6 @@ export function JobCard({
             </span>
           </div>
         </div>
-
         <a
           href={job.officialUrl}
           target="_blank"

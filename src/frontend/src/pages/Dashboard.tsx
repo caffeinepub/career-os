@@ -96,13 +96,12 @@ export function Dashboard() {
   const dailyPicks = allJobs?.slice(0, 3) ?? [];
   const todayCount = allJobs?.length ?? 0;
   const savedCount = savedJobIds.length;
-
   const isLoading = featuredLoading || allJobsLoading || profileLoading;
 
   return (
     <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin">
       <div className="max-w-5xl mx-auto px-4 py-6 pb-24 md:pb-8 space-y-8">
-        {/* ── Hero Header ──────────────────────────────────────── */}
+        {/* Hero Header */}
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -112,17 +111,15 @@ export function Dashboard() {
         >
           <div className="dot-grid-bg absolute inset-0 rounded-2xl opacity-30 pointer-events-none" />
           <div className="relative rounded-2xl border border-border/50 glass-card p-6 overflow-hidden">
-            {/* Glow orbs */}
             <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-cyan/8 blur-3xl pointer-events-none" />
             <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-violet/8 blur-3xl pointer-events-none" />
-
             <div className="relative">
               <p className="text-muted-foreground text-xs font-mono tracking-widest uppercase mb-1">
                 {formatDate()}
               </p>
-              <h1 className="font-display font-bold text-2xl md:text-3xl text-foreground leading-tight">
+              <h1 className="font-bold text-2xl md:text-3xl text-foreground leading-tight">
                 {getGreeting()},{" "}
-                <span className="text-gradient-cyan">Dushyant</span> 👋
+                <span className="text-gradient-cyan">Career OS</span> 👋
               </h1>
               <p className="text-muted-foreground text-sm mt-1.5 max-w-xl">
                 Your career intelligence platform is tracking{" "}
@@ -135,7 +132,7 @@ export function Dashboard() {
           </div>
         </motion.div>
 
-        {/* ── Onboarding Prompt (if no profile) ──────────────── */}
+        {/* Onboarding Prompt */}
         {!isLoading && !userProfile && (
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -149,7 +146,7 @@ export function Dashboard() {
                 <Target className="h-4 w-4 text-violet" />
               </div>
               <div>
-                <p className="text-sm font-display font-semibold text-foreground">
+                <p className="text-sm font-semibold text-foreground">
                   Set up your Career Path
                 </p>
                 <p className="text-xs text-muted-foreground">
@@ -164,14 +161,13 @@ export function Dashboard() {
                 size="sm"
                 className="border-violet/30 text-violet hover:bg-violet/15 shrink-0 gap-1.5"
               >
-                Get Started
-                <ArrowRight className="h-3.5 w-3.5" />
+                Get Started <ArrowRight className="h-3.5 w-3.5" />
               </Button>
             </Link>
           </motion.div>
         )}
 
-        {/* ── Stats Row ────────────────────────────────────────── */}
+        {/* Stats Row */}
         <section data-ocid="dashboard.stats.section">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             <StatsCard
@@ -209,11 +205,10 @@ export function Dashboard() {
           </div>
         </section>
 
-        {/* ── Quick Actions ─────────────────────────────────────── */}
+        {/* Quick Actions */}
         <section data-ocid="dashboard.quick_actions.section">
-          <h2 className="font-display font-semibold text-sm text-muted-foreground uppercase tracking-widest mb-3 flex items-center gap-2">
-            <Zap className="h-3.5 w-3.5 text-cyan" />
-            Quick Actions
+          <h2 className="font-semibold text-sm text-muted-foreground uppercase tracking-widest mb-3 flex items-center gap-2">
+            <Zap className="h-3.5 w-3.5 text-cyan" /> Quick Actions
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
             {QUICK_ACTIONS.map((action, i) => (
@@ -238,12 +233,12 @@ export function Dashboard() {
           </div>
         </section>
 
-        {/* ── Featured Jobs Strip ───────────────────────────────── */}
+        {/* Featured Jobs Strip */}
         <section data-ocid="dashboard.featured_jobs.section">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="font-display font-semibold text-sm text-muted-foreground uppercase tracking-widest flex items-center gap-2">
-              <TrendingUp className="h-3.5 w-3.5 text-cyan" />
-              Featured Opportunities
+            <h2 className="font-semibold text-sm text-muted-foreground uppercase tracking-widest flex items-center gap-2">
+              <TrendingUp className="h-3.5 w-3.5 text-cyan" /> Featured
+              Opportunities
             </h2>
             <Link to="/discover" data-ocid="dashboard.view_all_jobs.link">
               <Button
@@ -255,7 +250,6 @@ export function Dashboard() {
               </Button>
             </Link>
           </div>
-
           {featuredLoading ? (
             <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
               {[0, 1, 2].map((i) => (
@@ -288,20 +282,15 @@ export function Dashboard() {
               <p className="text-muted-foreground text-sm">
                 No featured jobs right now.
               </p>
-              <p className="text-muted-foreground text-xs mt-0.5">
-                Check back soon for new opportunities.
-              </p>
             </div>
           )}
         </section>
 
-        {/* ── Daily Picks + Trending Skills side by side ────────── */}
+        {/* Daily Picks + Trending Skills */}
         <div className="grid md:grid-cols-[1fr_280px] gap-6">
-          {/* Daily Picks */}
           <section data-ocid="dashboard.daily_picks.section">
-            <h2 className="font-display font-semibold text-sm text-muted-foreground uppercase tracking-widest mb-3 flex items-center gap-2">
-              <Flame className="h-3.5 w-3.5 text-gold" />
-              Today's Picks
+            <h2 className="font-semibold text-sm text-muted-foreground uppercase tracking-widest mb-3 flex items-center gap-2">
+              <Flame className="h-3.5 w-3.5 text-gold" /> Today's Picks
             </h2>
             {allJobsLoading ? (
               <div className="space-y-3">
@@ -321,10 +310,7 @@ export function Dashboard() {
                 ))}
               </div>
             ) : (
-              <div
-                className="glass-card rounded-xl p-8 text-center"
-                data-ocid="daily_picks.empty_state"
-              >
+              <div className="glass-card rounded-xl p-8 text-center">
                 <Briefcase className="h-8 w-8 text-muted-foreground mx-auto mb-2 opacity-40" />
                 <p className="text-muted-foreground text-sm">
                   Loading your picks...
@@ -333,11 +319,9 @@ export function Dashboard() {
             )}
           </section>
 
-          {/* Trending Skills */}
           <section data-ocid="dashboard.trending_skills.section">
-            <h2 className="font-display font-semibold text-sm text-muted-foreground uppercase tracking-widest mb-3 flex items-center gap-2">
-              <TrendingUp className="h-3.5 w-3.5 text-violet" />
-              Trending Skills
+            <h2 className="font-semibold text-sm text-muted-foreground uppercase tracking-widest mb-3 flex items-center gap-2">
+              <TrendingUp className="h-3.5 w-3.5 text-violet" /> Trending Skills
             </h2>
             <div className="glass-card rounded-xl p-4 space-y-3">
               {TRENDING_SKILLS.map((skill, i) => (
@@ -381,7 +365,6 @@ export function Dashboard() {
           </section>
         </div>
 
-        {/* ── Footer ───────────────────────────────────────────── */}
         <footer className="text-center pt-4 border-t border-border/30">
           <p className="text-muted-foreground text-xs">
             © {new Date().getFullYear()}. Built with ♥ using{" "}

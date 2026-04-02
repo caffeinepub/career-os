@@ -3,7 +3,6 @@ import type { Job, JobFilter, UserProfile } from "../backend.d";
 import { JobType, Preference } from "../backend.d";
 import { useActor } from "./useActor";
 
-// ─── Query Keys ──────────────────────────────────────────────────────────────
 export const queryKeys = {
   jobs: (filter?: JobFilter | null) => ["jobs", filter] as const,
   featuredJobs: () =>
@@ -14,7 +13,6 @@ export const queryKeys = {
   learningHubs: () => ["learningHubs"] as const,
 };
 
-// ─── Seed Data ────────────────────────────────────────────────────────────────
 const SEED_JOBS: Omit<Job, "id">[] = [
   {
     title: "Junior Software Engineer",
@@ -76,9 +74,73 @@ const SEED_JOBS: Omit<Job, "id">[] = [
     isFeatured: true,
     officialUrl: "https://upsc.gov.in",
   },
+  {
+    title: "Data Scientist",
+    organization: "Wipro",
+    jobType: JobType.priv,
+    state: "Telangana",
+    skills: ["Python", "Machine Learning", "TensorFlow", "SQL"],
+    deadline: BigInt(Date.now() + 25 * 24 * 60 * 60 * 1000) * BigInt(1_000_000),
+    summary:
+      "Drive data-driven insights for business transformation using ML and AI.",
+    category: "Data Science",
+    salaryRange: "10-18 LPA",
+    qualification: "B.Tech/M.Tech in CS/Statistics",
+    isFeatured: true,
+    officialUrl: "https://wipro.com/careers",
+  },
+  {
+    title: "IBPS PO 2025",
+    organization: "Institute of Banking Personnel Selection",
+    jobType: JobType.govt,
+    state: "All India",
+    skills: [
+      "Reasoning",
+      "Quantitative Aptitude",
+      "English",
+      "General Awareness",
+    ],
+    deadline: BigInt(Date.now() + 35 * 24 * 60 * 60 * 1000) * BigInt(1_000_000),
+    summary:
+      "Probationary Officer recruitment across public sector banks in India.",
+    category: "Banking",
+    salaryRange: "35,000-65,000/month",
+    qualification: "Any Graduate",
+    isFeatured: false,
+    officialUrl: "https://ibps.in",
+  },
+  {
+    title: "Frontend Developer",
+    organization: "Razorpay",
+    jobType: JobType.priv,
+    state: "Karnataka",
+    skills: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
+    deadline: BigInt(Date.now() + 18 * 24 * 60 * 60 * 1000) * BigInt(1_000_000),
+    summary:
+      "Build high-performance payment UIs serving millions of merchants across India.",
+    category: "Software",
+    salaryRange: "15-28 LPA",
+    qualification: "B.Tech/BE in CS or related",
+    isFeatured: true,
+    officialUrl: "https://razorpay.com/jobs",
+  },
+  {
+    title: "ISRO Scientist/Engineer 2025",
+    organization: "Indian Space Research Organisation",
+    jobType: JobType.govt,
+    state: "All India",
+    skills: ["Aerospace Engineering", "Electronics", "Computer Science"],
+    deadline: BigInt(Date.now() + 40 * 24 * 60 * 60 * 1000) * BigInt(1_000_000),
+    summary:
+      "Join India's space mission as a scientist or engineer in cutting-edge research.",
+    category: "Defence/Research",
+    salaryRange: "56,100-1,77,500/month",
+    qualification: "B.Tech/BE in relevant engineering",
+    isFeatured: true,
+    officialUrl: "https://isro.gov.in/careers",
+  },
 ];
 
-// ─── Seeding Hook ─────────────────────────────────────────────────────────────
 export function useSeedJobs() {
   const { actor, isFetching } = useActor();
   const queryClient = useQueryClient();
@@ -102,7 +164,6 @@ export function useSeedJobs() {
   });
 }
 
-// ─── Jobs Hooks ───────────────────────────────────────────────────────────────
 export function useListJobs(filter?: JobFilter | null) {
   const { actor, isFetching } = useActor();
   return useQuery<Job[]>({
@@ -129,7 +190,6 @@ export function useFeaturedJobs() {
   });
 }
 
-// ─── User Profile Hooks ───────────────────────────────────────────────────────
 export function useUserProfile() {
   const { actor, isFetching } = useActor();
   return useQuery<UserProfile | null>({
@@ -157,7 +217,6 @@ export function useUpdateUserProfile() {
   });
 }
 
-// ─── Saved Jobs Hooks ─────────────────────────────────────────────────────────
 export function useSavedJobs() {
   const { actor, isFetching } = useActor();
   return useQuery<bigint[]>({
@@ -172,11 +231,14 @@ export function useSavedJobs() {
   });
 }
 
+type SaveJobVars = { jobId: bigint; save: boolean };
+type SaveJobCtx = { prev: bigint[] };
+
 export function useSaveJob() {
   const { actor } = useActor();
   const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: async ({ jobId, save }: { jobId: bigint; save: boolean }) => {
+  return useMutation<void, Error, SaveJobVars, SaveJobCtx>({
+    mutationFn: async ({ jobId, save }: SaveJobVars) => {
       if (!actor) throw new Error("No actor");
       if (save) {
         await actor.saveJob(jobId);
@@ -184,7 +246,7 @@ export function useSaveJob() {
         await actor.unsaveJob(jobId);
       }
     },
-    onMutate: async ({ jobId, save }) => {
+    onMutate: async ({ jobId, save }: SaveJobVars) => {
       await queryClient.cancelQueries({ queryKey: queryKeys.savedJobs() });
       const prev =
         queryClient.getQueryData<bigint[]>(queryKeys.savedJobs()) ?? [];
@@ -205,7 +267,6 @@ export function useSaveJob() {
   });
 }
 
-// ─── Career Paths ─────────────────────────────────────────────────────────────
 export function useCareerPaths() {
   const { actor, isFetching } = useActor();
   return useQuery({
@@ -219,7 +280,6 @@ export function useCareerPaths() {
   });
 }
 
-// ─── Learning Hubs ────────────────────────────────────────────────────────────
 export function useLearningHubs() {
   const { actor, isFetching } = useActor();
   return useQuery({
@@ -233,7 +293,6 @@ export function useLearningHubs() {
   });
 }
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
 export function getDeadlineDaysLeft(deadlineNs: bigint): number {
   const deadlineMs = Number(deadlineNs) / 1_000_000;
   const now = Date.now();

@@ -14,7 +14,7 @@ const LEARNING_HUBS = [
   },
   {
     field: "UPSC / Civil Services",
-    icon: "🏛️",
+    icon: "🏗️",
     count: 8,
     color: "text-gold",
     badge: "High Demand",
@@ -116,7 +116,6 @@ export function Learning() {
   return (
     <div className="flex-1 overflow-y-auto scrollbar-thin">
       <div className="max-w-4xl mx-auto px-4 py-8 pb-24 md:pb-10 space-y-8">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,7 +127,7 @@ export function Learning() {
               <BookOpen className="h-5 w-5 text-emerald-400" />
             </div>
             <div>
-              <h1 className="font-display font-bold text-2xl text-foreground">
+              <h1 className="font-bold text-2xl text-foreground">
                 Learning Hubs
               </h1>
               <p className="text-muted-foreground text-xs">
@@ -138,7 +137,6 @@ export function Learning() {
           </div>
         </motion.div>
 
-        {/* Coming Soon Banner */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -146,16 +144,15 @@ export function Learning() {
           className="glass-card rounded-2xl p-6 relative overflow-hidden border border-emerald-500/15"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-cyan/5 pointer-events-none" />
-
           <div className="relative flex flex-col md:flex-row gap-6">
             <div className="flex-1">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4">
                 <Sparkles className="h-3.5 w-3.5 text-emerald-400" />
                 <span className="text-emerald-400 text-xs font-mono font-medium tracking-wider">
-                  PHASE 3 · COMING SOON
+                  12 FIELD HUBS
                 </span>
               </div>
-              <h2 className="font-display font-bold text-2xl text-foreground mb-2">
+              <h2 className="font-bold text-2xl text-foreground mb-2">
                 12 Field-Based Learning Hubs
               </h2>
               <p className="text-muted-foreground text-sm leading-relaxed">
@@ -164,8 +161,6 @@ export function Learning() {
                 holes.
               </p>
             </div>
-
-            {/* Playlist Preview */}
             <div className="md:w-64 space-y-2">
               {PLAYLIST_PREVIEW.map((p, i) => (
                 <motion.div
@@ -198,10 +193,9 @@ export function Learning() {
           </div>
         </motion.div>
 
-        {/* Hub Grid Preview */}
         <section>
-          <h2 className="font-display font-semibold text-sm text-muted-foreground uppercase tracking-widest mb-3">
-            Upcoming Hubs
+          <h2 className="font-semibold text-sm text-muted-foreground uppercase tracking-widest mb-3">
+            Available Hubs
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
             {LEARNING_HUBS.map((hub, i) => (
@@ -210,7 +204,7 @@ export function Learning() {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + i * 0.03 }}
-                className="glass-card rounded-xl p-3.5 flex flex-col gap-1.5 opacity-70 cursor-default"
+                className="glass-card rounded-xl p-3.5 flex flex-col gap-1.5 cursor-default hover:border-border/70 transition-colors"
                 data-ocid={`learning.hub.item.${i + 1}`}
               >
                 <div className="flex items-center justify-between">
@@ -224,7 +218,7 @@ export function Learning() {
                     </Badge>
                   )}
                 </div>
-                <p className="font-display font-semibold text-[12px] text-foreground leading-tight">
+                <p className="font-semibold text-[12px] text-foreground leading-tight">
                   {hub.field}
                 </p>
                 <p className="text-muted-foreground text-[10px] font-mono">

@@ -24,20 +24,17 @@ export function JobCardSkeleton({ compact = false }: JobCardSkeletonProps) {
         </div>
         <div className="h-7 w-7 rounded-lg shimmer shrink-0" />
       </div>
-
       {!compact && (
         <div className="space-y-1.5">
           <div className="h-3 w-full rounded shimmer" />
           <div className="h-3 w-4/5 rounded shimmer" />
         </div>
       )}
-
       <div className="flex gap-1.5">
         <div className="h-5 w-16 rounded shimmer" />
         <div className="h-5 w-14 rounded shimmer" />
-        <div className="h-5 w-18 rounded shimmer" />
+        <div className="h-5 w-20 rounded shimmer" />
       </div>
-
       <div className="flex items-center justify-between pt-1 border-t border-border/50">
         <div className="flex gap-3">
           <div className="h-3 w-14 rounded shimmer" />
